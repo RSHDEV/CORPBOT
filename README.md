@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://pa1.narvii.com/6770/9e83e3068f7c23c11affba50c0efae2e7ab41168_hq.gif" alt="GIFTIA" width="300" />
+<img src="https://pa1.narvii.com/6770/9e83e3068f7c23c11affba50c0efae2e7ab41168_hq.gif" alt="GIFTIA"  width="127" height="127" />
 
 # DAHLAH
 
