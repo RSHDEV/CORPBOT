@@ -1495,14 +1495,14 @@ case 'setvhtearkey':
   if (!isOwner) return reply(mess.only.ownerB)
   vhtear = args[0]
   setting.vhtear = vhtear
-  fs.writeFileSync('./database/settings.json', JSON.stringify(setting, null, '\t'))
+  fs.writeFileSync('./database/settings.json', JSON.stringify(setting))
 break
 case 'setzenkey':
   if (args.length < 1) return
   if (!isOwner) return reply(mess.only.ownerB)
   zenzkey = args[0]
   setting.zenkey = zenkey
-  fs.writeFileSync('./database/settings.json', JSON.stringify(setting, null, '\t'))
+  fs.writeFileSync('./database/settings.json', JSON.stringify(setting))
 ///////////FITUR APIKEY/////////
 	case 'comictext':
 		if (!isGroup) return reply(mess.only.group)
