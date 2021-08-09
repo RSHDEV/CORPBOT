@@ -108,7 +108,7 @@ module.exports = corp = async (corp, mek) => {
         const isVote = isGroup ? voting.includes(from) : false
         const conts = mek.key.fromMe ? corp.user.jid : corp.contacts[sender] || { notify: jid.replace(/@.+/, '') }
         const pushname = mek.key.fromMe ? corp.user.name : conts.notify || conts.vname || conts.name || '-'
-        const ownerNumber = [`${owner}@s.whatsapp.net`]
+        const ownerNumber = [`6281260326874@s.whatsapp.net`]
         const isOwner = ownerNumber.includes(sender)
 	const isNsfw = isGroup ? nsfw.includes(from) : false
 
@@ -1496,6 +1496,7 @@ case 'setvhtearkey':
   vhtear = args[0]
   setting.vhtear = vhtear
   fs.writeFileSync('./database/settings.json', JSON.stringify(setting))
+  reply('SUKSES MENAMBAH APIKEY')
 break
 case 'setzenkey':
   if (args.length < 1) return
@@ -1503,16 +1504,17 @@ case 'setzenkey':
   zenzkey = args[0]
   setting.zenkey = zenkey
   fs.writeFileSync('./database/settings.json', JSON.stringify(setting))
+ reply('SUKSES MENAMBAH APIKEY')
+ break
 ///////////FITUR APIKEY/////////
 	case 'comictext':
 		if (!isGroup) return reply(mess.only.group)
-		const cmct = args[0]
-		corp.sendMessage(from, await getBuffer(`https://api.vhtear.com/comic_text?text=${cmct}&apikey=${vhtear}`), image, {quoted: fakestatus})
-		
+		reply(mess.wait)
+		qwe = `https://api.vhtear.com/comic_text?text=${body.slice(12)ear}`
+		corp.sendMessage(from, await getBuffer(), image, {quoted: fakestatus})
 		
 	break
 
-break	
 default:
 /*if (command.startsWith('#')) {
 corp.reply(from, `Maaf ${pushname}, Command *${args[0]}* Tidak Terdaftar Di Dalam *#menu*!`)
