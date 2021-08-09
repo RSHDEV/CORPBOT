@@ -25,9 +25,10 @@
 ## CARA INSTALL DI LAPTOP
 ```bash
 > git clone https://github.com/GIFTIABOT/SELF-HX 
-> cd SELF-HX
-> npm i
-> npm start/node main.js
+> cd CORPBOT
+> npm install
+> npm i github:adiwajshing/baileys
+> npm start
 ```
 
 # INSTALL
