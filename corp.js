@@ -1,5 +1,4 @@
-// SC NYA JANGAN DI JUAL NGENTOD
-//MAKASIH DAH PAKE 
+//CREATE BY RSHDEV
 const
 	{
 		WAConnection,
@@ -55,6 +54,9 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 // DATABASE
 const nsfw = JSON.parse(fs.readFileSync("./database/nsfw.json"))
+const setting = JSON.parse(fs.readFileSync('./database/settings.json'))
+vhtear = setting.vhtear
+zenkey = setting.zenkey
 
 banChats = true
 offline = false
@@ -1462,6 +1464,7 @@ ${descOwner ? `*Desc diubah oleh* : @${descOwner.split('@')[0]}` : '*Desc diubah
              reply('Link error')
              }
              break
+///////NSFW MENU/////
 case 'nsfw':
     if (!isGroup) return reply(mess.only.group)
     if (args.length < 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}welcome enable`)
@@ -1479,16 +1482,41 @@ reply('Succes mematikan nsfw di group ini')
 } else {
 reply(`Pilih enable atau disable\nContoh : ${prefix}welcome enable`)
 }
-case 'nsfwneko':
+case 'hentai':
                 //if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (!isNsfw) return reply('Nsfw group belum aktif')
                 //if (!isGroup)return reply(mess.OnlyGrup)
                 reply(mess.wait)
+		corp.sendMessage(from, await getBuffer(`https://zenzapi.xyz/api/anime/nsfw/hentai?apikey=${zankey}`), image)
 		break
+//////////APIKEY MENU/////
+case 'setvhtearkey':
+  if (args.length < 1) return
+  if (!isOwner) return reply(mess.only.ownerB)
+  vhtear = args[0]
+  setting.vhtear = vhtear
+  fs.writeFileSync('./database/settings.json', JSON.stringify(setting, null, '\t'))
+break
+case 'setzenkey':
+  if (args.length < 1) return
+  if (!isOwner) return reply(mess.only.ownerB)
+  zenzkey = args[0]
+  setting.zenkey = zenkey
+  fs.writeFileSync('./database/settings.json', JSON.stringify(setting, null, '\t'))
+///////////FITUR APIKEY/////////
+	case 'comictext':
+		if (!isGroup) return reply(mess.only.group)
+		const cmct = args[0]
+		corp.sendMessage(from, await getBuffer(`https://api.vhtear.com/comic_text?text=${cmct}&apikey=${vhtear}`), image, {quoted: fakestatus})
+		
+		
+	break
+
+break	
 default:
-if (command.startsWith('#')) {
+/*if (command.startsWith('#')) {
 corp.reply(from, `Maaf ${pushname}, Command *${args[0]}* Tidak Terdaftar Di Dalam *#menu*!`)
-            }// yg ini masih beta
+            }*/// yg ini masih beta
 if (budy.startsWith('x')){
 try {
 return corp.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
