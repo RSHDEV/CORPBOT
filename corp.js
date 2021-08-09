@@ -1,5 +1,3 @@
-// SC NYA JANGAN DI JUAL NGENTOD
-//MAKASIH DAH PAKE 
 const
 	{
 		WAConnection,
@@ -108,15 +106,15 @@ module.exports = corp = async (corp, mek) => {
 
         //MESS
 		mess = {
-			wait: 'Otewe',
+			wait: '_Tunggu Sebentar_',
 			success: 'Berhasil!',
 			wrongFormat: 'Format salah, coba liat lagi di menu',
 			error: {
-				stick: 'bukan sticker itu:v',
-				Iv: 'Linknya error:v'
+				stick: 'Yg anda reply bukan sticker',
+				Iv: '_Linknya error!_'
 			},
 			only: {
-				group: 'Khusus grup ngab',
+				group: '_fitur ini tersedia di grup_',
 			}
 		}
 		const isUrl = (url) => {
@@ -332,8 +330,7 @@ switch (command) {
 					const buttons = [
 						{buttonId: 'id1', buttonText: {displayText: '#ownermenu'}, type: 1},
 						{buttonId: 'id2', buttonText: {displayText: '#adminmenu'}, type: 1}, 
-						{buttonId: 'id3', buttonText: {displayText: '#grupmenu2'}, type: 1},
-						{buttonId: 'id1', buttonText: {displayText: '#grupmenu4'}, type: 1}
+						{buttonId: 'id3', buttonText: {displayText: '#premiummenu'}, type: 1},
 						//{buttonId: 'id1', buttonText: {displayText: '#othermenu'}, type: 1},
 					  ]
 					  
