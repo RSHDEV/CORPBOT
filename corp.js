@@ -54,7 +54,7 @@ const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 
 // DATABASE
-let nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'));
+const nsfw = JSON.parse(fs.readFileSync("./database/nsfw.json"))
 
 banChats = true
 offline = false
@@ -1463,21 +1463,22 @@ ${descOwner ? `*Desc diubah oleh* : @${descOwner.split('@')[0]}` : '*Desc diubah
              }
              break
 case 'nsfw':
-    if (!isGroup) return
-    if (args[0] === 'enable'){
-                    if (isWelcome) return reply(`Udah aktif`)
-                    welcome.push(from)
-		fs.writeFileSync('./database/nsfw.json', JSON.stringify(welcome))
-		reply('Welcome aktif')
-                } else if (args[0] === 'disable'){
-                    let anu = welcome.indexOf(from)
-                    welcome.splice(anu, 1)
-                    fs.writeFileSync('./database/nsfw.json', JSON.stringify(welcome))
-                    reply('Welcome nonaktif')
-                } else {
-                    reply(`Pilih enable atau disable\nContoh : ${prefix}welcome enable`)
-                }
-                break
+    if (!isGroup) return reply(mess.only.group)
+    if (args.length < 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}welcome enable`)
+   if (args[0] === "enable") {
+if (isNsfw) return reply('Sudah Aktif')
+nsfw.push(from)
+fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfw))
+reply('Succes menyalakan nsfw di group ini')
+} else if (args[0] === "disable") {
+if (!isNsfw) return reply('Sudah Mati')
+let off = nsfw.indexOf(from)
+nsfw.splice(off, 1)
+fs.writeFileSync('.database/nsfw.json', JSON.stringify(nsfw))
+reply('Succes mematikan nsfw di group ini')
+} else {
+reply(`Pilih enable atau disable\nContoh : ${prefix}welcome enable`)
+}
 case 'nsfwneko':
                 //if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (!isNsfw) return reply('Nsfw group belum aktif')
