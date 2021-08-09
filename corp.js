@@ -1474,7 +1474,7 @@ reply('Succes menyalakan nsfw di group ini')
 if (!isNsfw) return reply('Sudah Mati')
 let off = nsfw.indexOf(from)
 nsfw.splice(off, 1)
-fs.writeFileSync('.database/nsfw.json', JSON.stringify(nsfw))
+fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfw))
 reply('Succes mematikan nsfw di group ini')
 } else {
 reply(`Pilih enable atau disable\nContoh : ${prefix}welcome enable`)
