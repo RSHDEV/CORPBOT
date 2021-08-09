@@ -1464,12 +1464,12 @@ ${descOwner ? `*Desc diubah oleh* : @${descOwner.split('@')[0]}` : '*Desc diubah
              break
 case 'nsfw':
     if (!isGroup) return
-    if (args[1].toLowerCase() === 'enable'){
+    if (args[0] === 'enable'){
                     if (isWelcome) return reply(`Udah aktif`)
                     welcome.push(from)
 		fs.writeFileSync('./database/nsfw.json', JSON.stringify(welcome))
 		reply('Welcome aktif')
-                } else if (args[1].toLowerCase() === 'disable'){
+                } else if (args[0] === 'disable'){
                     let anu = welcome.indexOf(from)
                     welcome.splice(anu, 1)
                     fs.writeFileSync('./database/nsfw.json', JSON.stringify(welcome))
