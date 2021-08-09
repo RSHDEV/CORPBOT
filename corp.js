@@ -1510,8 +1510,8 @@ case 'setzenkey':
 	case 'comictext':
 		if (!isGroup) return reply(mess.only.group)
 		reply(mess.wait)
-		qwe = `https://api.vhtear.com/comic_text?text=${body.slice(12)ear}`
-		corp.sendMessage(from, await getBuffer(), image, {quoted: fakestatus})
+		qwe = `https://api.vhtear.com/comic_text?text=${body.slice(12)}
+		corp.sendMessage(from, await getBuffer(qwe), image, {caption: mess.success, quoted: mek})
 		
 	break
 
