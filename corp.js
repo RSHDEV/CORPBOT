@@ -53,6 +53,9 @@ const { addVote, delVote } = require('./lib/vote')
 const { jadibot, stopjadibot, listjadibot } = require('./lib/jadibot')
 
 
+// DATABASE
+let nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'));
+
 banChats = true
 offline = false
 targetpc = '6281260326874'
@@ -105,6 +108,7 @@ module.exports = corp = async (corp, mek) => {
         const pushname = mek.key.fromMe ? corp.user.name : conts.notify || conts.vname || conts.name || '-'
         const ownerNumber = [`${owner}@s.whatsapp.net`]
         const isOwner = ownerNumber.includes(sender)
+	const isNsfw = isGroup ? nsfw.includes(from) : false
 
 
         //MESS
@@ -1458,7 +1462,32 @@ ${descOwner ? `*Desc diubah oleh* : @${descOwner.split('@')[0]}` : '*Desc diubah
              reply('Link error')
              }
              break
+case 'nsfw':
+    if (!isGroup) return
+    if (args[1].toLowerCase() === 'enable'){
+                    if (isWelcome) return reply(`Udah aktif`)
+                    welcome.push(from)
+		fs.writeFileSync('./database/nsfw.json', JSON.stringify(welcome))
+		reply('Welcome aktif')
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = welcome.indexOf(from)
+                    welcome.splice(anu, 1)
+                    fs.writeFileSync('./database/nsfw.json', JSON.stringify(welcome))
+                    reply('Welcome nonaktif')
+                } else {
+                    reply(`Pilih enable atau disable\nContoh : ${prefix}welcome enable`)
+                }
+                break
+case 'nsfwneko':
+                //if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (!isNsfw) return reply('Nsfw group belum aktif')
+                //if (!isGroup)return reply(mess.OnlyGrup)
+                reply(mess.wait)
+		break
 default:
+if (command.startsWith('#')) {
+corp.reply(from, `Maaf ${pushname}, Command *${args[0]}* Tidak Terdaftar Di Dalam *#menu*!`)
+            }// yg ini masih beta
 if (budy.startsWith('x')){
 try {
 return corp.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
