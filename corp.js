@@ -1516,9 +1516,7 @@ case 'setzenkey':
 	break
 
 default:
-/*if (command.startsWith('#')) {
-corp.reply(from, `Maaf ${pushname}, Command *${args[0]}* Tidak Terdaftar Di Dalam *#menu*!`)
-            }*/// yg ini masih beta
+
 if (budy.startsWith('x')){
 try {
 return corp.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
