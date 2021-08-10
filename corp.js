@@ -1488,8 +1488,8 @@ case 'hentai':
                 if (!isNsfw) return reply('Nsfw group belum aktif')
                 //if (!isGroup)return reply(mess.OnlyGrup)
                 reply(mess.wait)
-		corp.sendMessage(from, await getBuffer(`https://zenzapi.xyz/api/anime/nsfw/hentai?apikey=${zenkey}`), image)
-		break
+		hnti = `https://zenzapi.xyz/api/anime/nsfw/hentai?apikey=${zenkey}`
+		corp.sendMessage(from, await getBuffer(hnti), image, {caption: mess.success, quoted: mek})
 //////////APIKEY MENU/////
 case 'setvhtearkey':
   if (args.length < 1) return
