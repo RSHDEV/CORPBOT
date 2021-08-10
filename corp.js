@@ -127,6 +127,7 @@ module.exports = corp = async (corp, mek) => {
 				ownerB: '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
 			}
 		}
+	//const ftext = {}
 		const isUrl = (url) => {
         return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
         }
@@ -1510,7 +1511,8 @@ case 'setzenkey':
 	case 'comictext':
 		if (!isGroup) return reply(mess.only.group)
 		reply(mess.wait)
-		qwe = `https://api.vhtear.com/comic_text?text=${body.slice(12)}`
+		//${body.slice(12)}
+		qwe = `https://zenzapi.xyz/api/anime/nsfw/hentai?apikey=7989bbc064fb`
 		corp.sendMessage(from, await getBuffer(qwe), image, {caption: mess.success, quoted: mek})
 		
 	break
