@@ -1492,11 +1492,11 @@ case 'hentai':
 		corp.sendMessage(from, await getBuffer(hnti), image, {caption: mess.success, quoted: mek})
 //////////APIKEY MENU/////
 ///////////FITUR APIKEY/////////
-	case 'comictext':
+	case 'hackertext':
 		if (!isGroup) return reply(mess.only.group)
 		reply(mess.wait)
 		//${body.slice(12)}
-		qwe = `https://zenzapi.xyz/api/anime/nsfw/hentai?apikey=7989bbc064fb`
+		qwe = `https://api.vhtear.com/hacker_avatar?text=${body.slice(12)}&apikey=Xfarbotkey`
 		corp.sendMessage(from, await getBuffer(qwe), image, {caption: mess.success, quoted: mek})
 		
 	break
